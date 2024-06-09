@@ -1,6 +1,5 @@
 package org.example.preproject_3_1_2.controller;
 
-import jakarta.transaction.Transactional;
 import org.example.preproject_3_1_2.Service.UserService;
 import org.example.preproject_3_1_2.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @Transactional
     @GetMapping("/deleteUser")
     public String deleteUser(@RequestParam("id") int id) {
         User user = userService.getUser(id);

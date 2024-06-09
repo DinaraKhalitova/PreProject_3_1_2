@@ -21,7 +21,6 @@ public class UserServiceImp implements UserService {
 
 
     @Override
-    @Transactional
     public List<User> findAll() {
         return userDao.findAll();
     }
@@ -33,7 +32,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public User getUser(long id) {
         return userDao.getUser(id);
     }
@@ -45,6 +43,7 @@ public class UserServiceImp implements UserService {
 
     }
 
+    @Transactional
     @Override
     public void deleteUser(User user) {
         userDao.deleteUser(user);

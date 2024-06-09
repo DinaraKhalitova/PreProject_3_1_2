@@ -3,14 +3,12 @@ package org.example.preproject_3_1_2.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.example.preproject_3_1_2.model.User;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 
 @Repository
-@Component
 public class UserDaoImp implements UserDao {
 
     @PersistenceContext
@@ -34,13 +32,12 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        User updateUser = em.merge(user);
-        em.persist(updateUser);
+        em.merge(user);
     }
 
     @Override
     public void deleteUser(User user) {
-        User deleteUser = em.merge(user);
+        User deleteUser = em.find(User.class, user.getId());
         em.remove(deleteUser);
     }
 }
